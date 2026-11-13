@@ -34,37 +34,6 @@ const WARP_AT = 9;
 const CREDITS_AT = 11;
 const RETURN_AT = 18;
 
-const ENEMY_STATS = {
-  drone: {
-    hp: 2,
-    score: 100,
-    radius: 13,
-    dropChance: 0.015,
-    canShoot: true,
-  },
-  dart: {
-    hp: 1,
-    score: 150,
-    radius: 12,
-    dropChance: 0.015,
-    canShoot: false,
-  },
-  turret: {
-    hp: 12,
-    score: 400,
-    radius: 19,
-    dropChance: 0.3,
-    canShoot: true,
-  },
-  lancer: {
-    hp: 4,
-    score: 250,
-    radius: 15,
-    dropChance: 0.06,
-    canShoot: true,
-  },
-} as const;
-
 /**
  * The whole game. mode is one of "title", "play", "attract" or "cutscene";
  * switching modes fades out and restarts this scene in the new mode.
@@ -354,13 +323,6 @@ export class GameScene extends Phaser.Scene implements Arena {
         x,
         y,
         "drone",
-        2,
-        100,
-        13,
-        0.015,
-        true,
-        false,
-        x,
         x < WIDTH / 2 ? 1 : -1,
       ),
     );
@@ -454,7 +416,6 @@ export class GameScene extends Phaser.Scene implements Arena {
   }
 
   private spawnWave(t: number, wave: Wave): void {
-    const stats = ENEMY_STATS[wave.kind];
     const middle = (wave.count - 1) / 2;
 
     for (let i = 0; i < wave.count; i++) {
@@ -482,13 +443,6 @@ export class GameScene extends Phaser.Scene implements Arena {
         x,
         y,
         wave.kind,
-        stats.hp,
-        stats.score,
-        stats.radius,
-        stats.dropChance,
-        stats.canShoot,
-        false,
-        x,
         i % 2 === 0 ? 1 : -1,
       );
 
