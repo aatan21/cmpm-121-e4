@@ -2,21 +2,21 @@ export type Formation = "line" | "vee" | "column" | "pincer";
 
 export type EnemyKind = "drone" | "dart" | "turret" | "lancer";
 
-export type Wave = {
+export interface Wave {
   at: number;
   kind: EnemyKind;
   count: number;
   formation: Formation;
   centerX?: number;
-};
+}
 
-export type Sector = {
+export interface Sector {
   name: string;
   subtitle: string;
   length: number;
   timeout: number;
   waves: readonly Wave[];
-};
+}
 
 export const SECTORS: readonly Sector[] = [
   // Sector 1

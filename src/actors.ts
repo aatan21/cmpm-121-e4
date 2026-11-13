@@ -166,7 +166,7 @@ export class PowerUp extends Actor {
   }
 }
 
-type PrefabSpec = {
+interface PrefabSpec {
   texture: string;
   hp: number;
   score: number;
@@ -175,7 +175,7 @@ type PrefabSpec = {
 
   move?: (enemy: Enemy, arena: Arena) => void;
   fire?: (enemy: Enemy, arena: Arena) => void;
-};
+}
 
 const PREFAB_STATS = {
   drone: {

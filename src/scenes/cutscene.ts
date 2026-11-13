@@ -6,17 +6,17 @@ import { TINTS } from "../textures.ts";
 import { Backdrop } from "./backdrop.ts";
 import { fadeTo } from "./transition.ts";
 
-export type RunSummary = {
+export interface RunSummary {
   score: number;
   kills: number;
   hits: number;
   continues: number;
-};
+}
 
-type CutsceneData = {
+interface CutsceneData {
   run: RunSummary;
   afterDemo: boolean;
-};
+}
 
 const STORY: [number, string][] = [
   [0.8, "The Warden's lights go dark, one ring at a time."],
